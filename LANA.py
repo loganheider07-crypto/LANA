@@ -97,6 +97,8 @@ except ImportError:
 # ============================================================
 
 LANA_FOLDER = Path(__file__).parent
+MODELS_FOLDER = LANA_FOLDER / "models"
+ASSETS_FOLDER = LANA_FOLDER / "assets"
 ENV_PATH = LANA_FOLDER / ".env"
 
 load_dotenv(
@@ -214,7 +216,7 @@ def current_vision_prompt():
     return cfg["vision_prompt"] + " Keep the answer brief because it will be spoken aloud. Use only what is actually visible; if unclear, say so. Do not use markdown."
 
 def current_piper_model_path():
-    return LANA_FOLDER / personality_config()["voice_model"]
+    return MODELS_FOLDER / personality_config()["voice_model"]
 
 # Keep Piper voices in memory so changing personalities is nearly instant.
 piper_voice_cache = {}
@@ -223,7 +225,7 @@ piper_voice_cache_lock = threading.Lock()
 def get_cached_piper_voice(personality_name=None):
     name = personality_name or CURRENT_PERSONALITY
     cfg = PERSONALITIES[name]
-    model_path = LANA_FOLDER / cfg["voice_model"]
+    model_path = MODELS_FOLDER / cfg["voice_model"]
     if not model_path.exists():
         raise FileNotFoundError(f"Voice model missing for {name}:\n{model_path}")
 
@@ -252,9 +254,9 @@ def preload_other_piper_voices():
             print(f"Could not preload {name} voice: {error}")
 
 ACKNOWLEDGEMENT_WAVS = {
-    "L.A.N.A.": LANA_FOLDER / "yes_sir_lana.wav",
-    "J.A.R.V.I.S.": LANA_FOLDER / "yes_sir_jarvis.wav",
-    "F.R.I.D.A.Y.": LANA_FOLDER / "yes_sir_friday.wav",
+    "L.A.N.A.": ASSETS_FOLDER / "yes_sir_lana.wav",
+    "J.A.R.V.I.S.": ASSETS_FOLDER / "yes_sir_jarvis.wav",
+    "F.R.I.D.A.Y.": ASSETS_FOLDER / "yes_sir_friday.wav",
 }
 
 def current_acknowledgement_wav():
@@ -278,11 +280,11 @@ def cache_personality_acknowledgements():
             print(f"Could not cache {name} acknowledgement: {error}")
 
 SPEECH_WAV = (
-    LANA_FOLDER / "lana_speech.wav"
+    ASSETS_FOLDER / "lana_speech.wav"
 )
 
 QUESTION_WAV = (
-    LANA_FOLDER / "question.wav"
+    ASSETS_FOLDER / "question.wav"
 )
 
 MEMORY_PATH = (
@@ -392,7 +394,7 @@ FOLLOW_UP_TIMEOUT = "__FOLLOW_UP_TIMEOUT__"
 REMINDER_ALERT_READY = "__REMINDER_ALERT_READY__"
 
 WAKE_WHISPER_MODEL = "tiny.en"
-LANA_WAKE_MODEL_PATH = LANA_FOLDER / "lana.onnx"
+LANA_WAKE_MODEL_PATH = MODELS_FOLDER / "lana.onnx"
 LANA_WAKE_THRESHOLD = 0.50
 LANA_WAKE_MODEL = None
 COMMAND_WHISPER_MODEL = "base.en"
@@ -596,7 +598,7 @@ def apply_lana_desktop_icon(root):
         print(f"L.A.N.A. PNG icon warning: {error}")
 
     try:
-        icon_path = Path(__file__).resolve().with_name("LANA.ico")
+        icon_path = ASSETS_FOLDER / "LANA.ico"
         if icon_path.exists():
             root.iconbitmap(default=str(icon_path))
     except Exception as error:
@@ -605,7 +607,7 @@ def apply_lana_desktop_icon(root):
 def reinforce_lana_taskbar_icon(root):
     """Re-apply WM_SETICON after Windows has created the native window."""
     try:
-        icon_path = Path(__file__).resolve().with_name("LANA.ico")
+        icon_path = ASSETS_FOLDER / "LANA.ico"
         if not icon_path.exists():
             return
         root.update_idletasks()
