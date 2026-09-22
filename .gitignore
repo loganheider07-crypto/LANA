@@ -1,0 +1,42 @@
+# Secrets / local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# L.A.N.A. private/runtime data
+lana_mobile_access_token.txt
+lana_mobile_link.txt
+lana_memory.json
+jarvis_memory.json
+lana_reminders.json
+lana_calendar.json
+lana_voice_settings.json
+lana_personality_settings.json
+lana_offline_playlist.m3u8
+.spotify_token_cache
+lana_browser_profile/
+lana_speech.wav
+question.wav
+yes_sir_*.wav
+
+# Local voice / wake-word model files
+*.onnx
+*.onnx.json
+*.pt
+*.pth
+*.bin
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
