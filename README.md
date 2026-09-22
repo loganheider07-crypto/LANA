@@ -4,6 +4,12 @@
 
 L.A.N.A. is a Windows-focused local AI assistant built in Python. This repository contains the main L.A.N.A. application and its local voice/wake-word assets.
 
+## Download
+
+### [⬇️ Download L.A.N.A. as a ZIP](https://github.com/loganheider07-crypto/LANA/archive/refs/heads/main.zip)
+
+This link always downloads the latest version from the `main` branch.
+
 ## Included
 
 - `LANA.py` — main application
