@@ -4,7 +4,7 @@
 
 L.A.N.A. is a Windows-focused local AI assistant built in Python. It combines voice interaction, local Ollama models, screen/camera understanding, Spotify controls, reminders/calendar features, PC controls, and a built-in mobile interface.
 
-> This repository currently contains **main L.A.N.A. only**. L.A.N.A. Vision, Control, 3D, and other companion projects are intentionally not included.
+> This repository currently contains **main L.A.N.A. only**. L.A.N.A. Control, 3D, and other companion projects are intentionally not included.
 
 ## Highlights
 
