@@ -1,0 +1,21 @@
+# L.A.N.A. Python dependencies
+# Generated from the imports and package updater in the current LANA.py.
+
+numpy
+sounddevice
+faster-whisper
+python-dotenv
+mss
+ollama
+piper-tts
+scipy
+spotipy
+pywin32
+opencv-python
+pycaw
+openwakeword
+onnxruntime
+
+# Optional features used by L.A.N.A.
+playwright
+winrt-Windows.Devices.Geolocation

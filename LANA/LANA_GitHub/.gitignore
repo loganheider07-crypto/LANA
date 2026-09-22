@@ -1,0 +1,29 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+.spotify_token_cache
+
+# Private/user runtime data
+lana_mobile_access_token.txt
+lana_mobile_link.txt
+lana_memory.json
+jarvis_memory.json
+lana_reminders.json
+lana_calendar.json
+lana_browser_profile/
+
+# Virtual environments are machine-specific and should be rebuilt
+.venv/
+venv/
+
+# Python/cache/editor/OS files
+__pycache__/
+*.py[cod]
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
